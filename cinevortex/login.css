@@ -1,0 +1,39 @@
+body {
+    background: #000;
+    color: #fff;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.logo { color: #e1bee7; margin-bottom: 20px; }
+.logo span { color: #9c27b0; }
+.auth-card {
+    background: #0f0f0f;
+    padding: 40px;
+    border: 1px solid #9c27b0;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: #9c27b0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.links { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.links a { color: #9575cd; text-decoration: none; font-size: 14px; }

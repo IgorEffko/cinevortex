@@ -1,0 +1,38 @@
+/* Estilo diferente para o Cadastro para provar que são arquivos separados */
+body {
+    background: #0a000a; /* Um tom levemente diferente */
+    color: #fff;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.logo { color: #e1bee7; }
+.logo span { color: #9c27b0; }
+.auth-card {
+    background: #111;
+    padding: 40px;
+    border-right: 5px solid #9c27b0; /* Detalhe visual diferente */
+    border-radius: 4px;
+    width: 320px;
+}
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: #000;
+    border: 1px solid #9c27b0;
+    color: white;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background: #fff; /* Botão branco no cadastro */
+    color: #9c27b0;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.links a { color: #9c27b0; text-decoration: none; display: block; margin-top: 15px; text-align: center; }
