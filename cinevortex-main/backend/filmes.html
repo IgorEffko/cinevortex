@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVortex • Minha Biblioteca</title>
+    <link rel="stylesheet" href="/aparecida/backend/css/filmes.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">CINE<span>VORTEX</span></h1>
+            <div class="header-buttons">
+                <button class="btn-login" onclick="window.location.href='login.php'">Entrar</button>
+                <button class="btn-signup" onclick="window.location.href='cadastro.php'">Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Minha Coleção de Filmes</h1>
+                <p class="hero-description">Adicione seus filmes favoritos com foto e descrição, organize em listas e faça suas avaliações</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="totalFilmes">0</span>
+                        <span class="stat-label">Total de Filmes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalAssistidos">0</span>
+                        <span class="stat-label">Assistidos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalFavoritos">0</span>
+                        <span class="stat-label">Favoritos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalQueroVer">0</span>
+                        <span class="stat-label">Quero Ver</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botão para Adicionar Filme -->
+        <div class="add-filme-container">
+            <button class="btn-add-filme" id="btnAddFilme">
+                <span class="btn-icon">+</span> Adicionar Novo Filme
+            </button>
+        </div>
+
+        <!-- Abas de Navegação -->
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="todos">🎬 Todos os Filmes</button>
+            <button class="tab-btn" data-tab="quero-ver">⏰ Quero Assistir</button>
+            <button class="tab-btn" data-tab="favoritos">⭐ Favoritos</button>
+            <button class="tab-btn" data-tab="assistidos">✅ Já Assistidos</button>
+        </div>
+
+        <!-- Grid de Filmes -->
+        <div class="filmes-container">
+            <div class="filmes-grid" id="filmes-grid"></div>
+        </div>
+    </main>
+
+    <!-- Modal para Adicionar/Editar Filme -->
+    <div id="modalFilme" class="modal">
+        <div class="modal-content">
+            <span class="modal-close close-filme">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalFilmeTitulo">➕ Adicionar Novo Filme</h2>
+            </div>
+            <div class="modal-body">
+                <form id="formFilme">
+                    <div class="form-group">
+                        <label>* Nome do Filme</label>
+                        <input type="text" id="filmeNome" class="form-input" required placeholder="Digite o nome do filme">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>URL da Imagem/Foto do Filme</label>
+                        <input type="text" id="filmeImagem" class="form-input" placeholder="https://exemplo.com/imagem.jpg">
+                        <small>Deixe em branco para usar imagem padrão</small>
+                        <div id="imagemPreview" class="imagem-preview" style="display: none;">
+                            <img id="previewImg" src="" alt="Preview">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>* Descrição do Filme</label>
+                        <textarea id="filmeDescricao" class="form-textarea" rows="4" required placeholder="Escreva uma descrição sobre o filme..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Gênero (opcional)</label>
+                        <input type="text" id="filmeGenero" class="form-input" placeholder="Ex: Ação, Comédia, Drama...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ano de Lançamento (opcional)</label>
+                        <input type="number" id="filmeAno" class="form-input" placeholder="2024">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancelar" id="btnCancelarFilme">Cancelar</button>
+                        <button type="submit" class="btn-salvar">Salvar Filme</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes e Avaliação do Filme -->
+    <div id="modalDetalhes" class="modal">
+        <div class="modal-content modal-grande">
+            <span class="modal-close close-detalhes">&times;</span>
+            <div id="detalhesConteudo"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>CineVortex © 2026 - Sua coleção de filmes personalizada</p>
+    </footer>
+
+    <script src="/aparecida/backend/js/filmes.js"></script>
+</body>
+</html>

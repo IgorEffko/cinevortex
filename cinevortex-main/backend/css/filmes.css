@@ -1,0 +1,800 @@
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background: #0a0a0a;
+    border-bottom: 2px solid #9c27b0;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #e1bee7, #9c27b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo span {
+    background: linear-gradient(135deg, #9c27b0, #e1bee7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-login,
+.btn-signup {
+    padding: 8px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-login {
+    background: transparent;
+    border: 2px solid #9c27b0;
+    color: #e1bee7;
+}
+
+.btn-login:hover {
+    background: rgba(156, 39, 176, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-signup {
+    background: #9c27b0;
+    color: white;
+}
+
+.btn-signup:hover {
+    background: #7b1fa2;
+    transform: translateY(-2px);
+}
+
+/* Conteúdo principal */
+.main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    flex: 1;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(0, 0, 0, 0.95));
+    border-radius: 24px;
+    padding: 50px 40px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+.hero-title {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: #e1bee7;
+}
+
+.hero-description {
+    color: #b39ddb;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.stat {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(156, 39, 176, 0.3);
+    min-width: 120px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #9c27b0;
+}
+
+.stat-label {
+    color: #9575cd;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Botão Adicionar Filme */
+.add-filme-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.btn-add-filme {
+    background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+    border: none;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+}
+
+.btn-add-filme:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.4);
+}
+
+.btn-icon {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Abas */
+.tabs-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: #b39ddb;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 30px;
+}
+
+.tab-btn:hover {
+    color: #9c27b0;
+    background: rgba(156, 39, 176, 0.1);
+}
+
+.tab-btn.active {
+    color: #9c27b0;
+    background: rgba(156, 39, 176, 0.2);
+}
+
+/* Grid de Filmes */
+.filmes-container {
+    min-height: 500px;
+}
+
+.filmes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Card do Filme */
+.filme-card {
+    background: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #333;
+}
+
+.filme-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(156, 39, 176, 0.3);
+    border-color: #9c27b0;
+}
+
+.filme-poster {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+}
+
+.filme-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.filme-card:hover .filme-poster img {
+    transform: scale(1.05);
+}
+
+/* Badges de Status */
+.filme-badges {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 2;
+}
+
+.badge {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.badge.favorito {
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+    color: #000;
+}
+
+.badge.assistido {
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
+}
+
+.badge.quero-ver {
+    background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+    color: white;
+}
+
+.badge.avaliacao {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: white;
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Overlay com botões */
+.filme-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.filme-card:hover .filme-overlay {
+    opacity: 1;
+}
+
+.btn-acao {
+    background: rgba(156, 39, 176, 0.9);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 160px;
+    text-align: center;
+}
+
+.btn-acao:hover {
+    background: #9c27b0;
+    transform: scale(1.05);
+}
+
+.btn-acao.ativo {
+    background: #4caf50;
+}
+
+/* Informações do filme */
+.filme-info {
+    padding: 15px;
+}
+
+.filme-titulo {
+    color: #e1bee7;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filme-descricao {
+    color: #b39ddb;
+    font-size: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.filme-detalhes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #9575cd;
+}
+
+.filme-nota {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid rgba(156, 39, 176, 0.5);
+}
+
+.modal-grande {
+    max-width: 1000px;
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    color: #9c27b0;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid #333;
+}
+
+.modal-header h2 {
+    color: #e1bee7;
+    font-size: 24px;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #e1bee7;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 12px 15px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #9c27b0;
+}
+
+.form-textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-group small {
+    display: block;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.imagem-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.imagem-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    border: 2px solid #9c27b0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.btn-cancelar,
+.btn-salvar {
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-cancelar {
+    background: transparent;
+    border: 1px solid #666;
+    color: #b39ddb;
+}
+
+.btn-cancelar:hover {
+    border-color: #9c27b0;
+    color: #9c27b0;
+}
+
+.btn-salvar {
+    background: #9c27b0;
+    color: white;
+}
+
+.btn-salvar:hover {
+    background: #7b1fa2;
+    transform: translateY(-2px);
+}
+
+/* Detalhes do Filme */
+.detalhes-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.detalhes-poster {
+    flex: 0 0 280px;
+}
+
+.detalhes-poster img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.detalhes-info {
+    flex: 1;
+}
+
+.detalhes-titulo {
+    font-size: 32px;
+    color: #e1bee7;
+    margin-bottom: 10px;
+}
+
+.detalhes-metadados {
+    color: #9575cd;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.detalhes-descricao {
+    color: #b39ddb;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Seção de Avaliação */
+.avaliacao-section {
+    background: #0a0a0a;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #333;
+}
+
+.avaliacao-titulo {
+    color: #e1bee7;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.stars-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 32px;
+    color: #444;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.active {
+    color: #ffd700;
+}
+
+.avaliacao-texto {
+    width: 100%;
+    padding: 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    resize: vertical;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+.salvar-avaliacao-btn {
+    background: #9c27b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.salvar-avaliacao-btn:hover {
+    background: #7b1fa2;
+    transform: translateY(-2px);
+}
+
+.avaliacao-existente {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-left: 3px solid #ff9800;
+}
+
+.avaliacao-existente p {
+    margin: 5px 0;
+    color: #b39ddb;
+}
+
+.detalhes-acoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.detalhes-btn {
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.detalhes-btn-primary {
+    background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+    color: white;
+}
+
+.detalhes-btn-secondary {
+    background: transparent;
+    border: 2px solid #9c27b0;
+    color: #e1bee7;
+}
+
+.detalhes-btn-secondary:hover,
+.detalhes-btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* Mensagem vazia */
+.empty-message {
+    text-align: center;
+    padding: 60px 40px;
+    color: #666;
+    background: #1a1a1a;
+    border-radius: 16px;
+    border: 2px dashed #333;
+    grid-column: 1/-1;
+}
+
+.empty-message span {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.empty-message p {
+    margin-bottom: 10px;
+}
+
+.empty-message small {
+    color: #888;
+}
+
+/* Footer */
+.footer {
+    background: #0a0a0a;
+    border-top: 2px solid #9c27b0;
+    padding: 25px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer p {
+    color: #9575cd;
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
+    
+    .main {
+        padding: 20px;
+    }
+    
+    .hero {
+        padding: 30px 20px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-stats {
+        gap: 15px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .filmes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .detalhes-container {
+        flex-direction: column;
+    }
+    
+    .detalhes-poster {
+        flex: 0 0 auto;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancelar,
+    .btn-salvar {
+        width: 100%;
+    }
+}

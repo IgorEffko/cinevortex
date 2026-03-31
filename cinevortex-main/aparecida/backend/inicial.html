@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVortex • Início</title>
+    <link rel="stylesheet" href="css/inicial.css">
+</head>
+<body>
+    <!-- Header simples -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">CINE<span>VORTEX</span></h1>
+            
+            <nav class="nav">
+                <a href="#" class="nav-link active">Início</a>
+                <a href="#" class="nav-link">Filmes</a>
+                <a href="#" class="nav-link">Em cartaz</a>
+                <a href="#" class="nav-link">Ingressos</a>
+            </nav>
+
+            <div class="header-buttons">
+                <button class="btn-login">Entrar</button>
+                <button class="btn-signup">Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="main">
+        <!-- Título da página -->
+        <div class="page-title">
+            <h2>Bem-vindo ao <span>CineVortex</span></h2>
+            <p>Avalie os filmes que você já assistiu</p>
+        </div>
+
+        <!-- Cards principais -->
+        <div class="cards">
+            <!-- Card Usuário -->
+            <div class="card" onclick="alert('Área do usuário')">
+                <div class="card-icon">👤</div>
+                <h3>Usuário</h3>
+                <p>Gerencie seu perfil e avaliações</p>
+                <button class="card-btn">Acessar →</button>
+            </div>
+
+            <!-- Card Filmes -->
+            <div class="card" onclick="alert('Catálogo de filmes')">
+                <div class="card-icon">🎬</div>
+                <h3>Filmes</h3>
+                <p>Explore filmes em cartaz e lançamentos</p>
+                <button class="card-btn">Explorar →</button>
+            </div>
+
+            <!-- Card Ingressos -->
+            <div class="card" onclick="alert('Comprar ingressos')">
+                <div class="card-icon">🎫</div>
+                <h3>Ingressos</h3>
+                <p>Compre ingressos para os cinemas</p>
+                <button class="card-btn">Comprar →</button>
+            </div>
+        </div>
+
+        <!-- Seção de Avaliação -->
+        <div class="avaliacao">
+            <h3 class="section-title">⭐ Avalie um Filme</h3>
+            
+            <div class="avaliacao-container">
+                <!-- Seleção do filme -->
+                <div class="select-filme">
+                    <label for="filme">Escolha o filme:</label>
+                    <select id="filme" class="select-input">
+                        <option value="">Selecione um filme</option>
+                        <option value="duna">Duna: Parte 2</option>
+                        <option value="interestelar">Interestelar</option>
+                        <option value="oppenheimer">Oppenheimer</option>
+                        <option value="divertida">Divertida Mente 2</option>
+                    </select>
+                </div>
+
+                <!-- Estrelas de avaliação -->
+                <div class="estrelas-container">
+                    <label>Sua nota:</label>
+                    <div class="estrelas">
+                        <span class="estrela" onclick="avaliar(1)">☆</span>
+                        <span class="estrela" onclick="avaliar(2)">☆</span>
+                        <span class="estrela" onclick="avaliar(3)">☆</span>
+                        <span class="estrela" onclick="avaliar(4)">☆</span>
+                        <span class="estrela" onclick="avaliar(5)">☆</span>
+                    </div>
+                    <span class="nota-texto" id="notaTexto">Clique nas estrelas</span>
+                </div>
+
+                <!-- Comentário -->
+                <div class="comentario">
+                    <label for="comentario">Comentário (opcional):</label>
+                    <textarea id="comentario" class="comentario-input" placeholder="O que você achou do filme?" rows="3"></textarea>
+                </div>
+
+                <!-- Botão enviar -->
+                <button class="btn-avaliar" onclick="enviarAvaliacao()">
+                    Enviar Avaliação
+                </button>
+            </div>
+        </div>
+
+        <!-- Últimas avaliações -->
+        <div class="ultimas-avaliacoes">
+            <h3 class="section-title">📝 Últimas Avaliações</h3>
+            
+            <div class="avaliacoes-lista" id="avaliacoesLista">
+                <!-- Avaliações aparecem aqui via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Botão voltar -->
+        <div class="logout-section">
+            <button class="btn-logout" onclick="alert('Voltar ao início')">
+                <span>←</span> Voltar
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer simples -->
+    <footer class="footer">
+        <p>CineVortex © 2024 - Avaliações de filmes</p>
+    </footer>
+
+    <script src="js/inicial.js"></script>
+</body>
+</html>

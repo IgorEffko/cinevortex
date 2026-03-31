@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVortex • Meu Perfil</title>
+    <link rel="stylesheet" href="/aparecida/backend/css/usuario.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">CINE<span>VORTEX</span></h1>
+            
+            <div class="header-buttons">
+                <button class="btn-login" onclick="window.location.href='login.php'">Entrar</button>
+                <button class="btn-signup" onclick="window.location.href='cadastro.php'">Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="page-title">
+            <h2>Meu <span>Perfil</span></h2>
+            <p>Gerencie suas informações e acompanhe sua atividade</p>
+        </div>
+
+        <div class="perfil-container">
+            <div class="config-btn-area">
+                <button class="btn-config" onclick="window.location.href='configuracoes.html'" title="perfils">
+                    🔍
+                </button>
+            </div>
+
+            <div class="perfil-header">
+                <div class="foto-area">
+                    <div class="foto-perfil" id="fotoPerfil" onclick="document.getElementById('uploadFoto').click()">
+                        <img id="fotoImagem" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%239c27b0'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='48' dy='.3em'%3E🎬%3C/text%3E%3C/svg%3E" alt="Foto de perfil">
+                        <div class="foto-overlay">
+                            <span>📷</span>
+                            <span>Trocar foto</span>
+                        </div>
+                    </div>
+                    <input type="file" id="uploadFoto" accept="image/*" style="display: none;">
+                    
+                    <div class="info-usuario">
+                        <h1 id="nomePerfil">Cinéfilo</h1>
+                        <p class="email" id="emailPerfil">cinefilo@email.com</p>
+                        <p class="membro">🎬 Membro desde <span id="membroDesde">2026</span></p>
+                    </div>
+                </div>
+
+            <div class="generos-section">
+                <div class="section-header">
+                    <h3 class="section-title">🎬 Meus Gêneros Favoritos</h3>
+                    <button class="btn-editar" id="btnEditarGeneros" onclick="window.location.href='generos.html'">
+                        ✏️ 
+                    </button>
+                </div>
+                <div class="generos-grid" id="generosLista">
+                </div>
+            </div>
+
+            <div class="avaliacoes-section">
+                <h3 class="section-title">⭐ Minhas Últimas Avaliações</h3>
+                <div class="avaliacoes-lista" id="avaliacoesLista">
+                </div>
+            </div>
+
+            <div class="logout-section">
+                <button class="btn-logout" onclick="window.location.href='home.html'">
+                    ← Voltar para o Início
+                </button>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>CineVortex © 2026 - Tudo sobre cinema em um só lugar</p>
+    </footer>
+
+    <script src="/aparecida/backend/js/usuario.js"></script>
+</body>
+</html>

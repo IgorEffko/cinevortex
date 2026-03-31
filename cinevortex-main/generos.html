@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVortex • Seus Gêneros Favoritos</title>
+    <link rel="stylesheet" href="/aparecida/backend/css/generos.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">CINE<span>VORTEX</span></h1>
+            
+            <div class="header-buttons">
+                <button class="btn-login" onclick="window.location.href='login.php'">Entrar</button>
+                <button class="btn-signup" onclick="window.location.href='cadastro.php'">Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="page-title">
+            <h2>Escolha seus <span>Gêneros Favoritos</span></h2>
+            <p>Selecione os gêneros que mais te interessam para personalizar sua experiência</p>
+            <p class="subtitle">✨ Você pode escolher quantos quiser!</p>
+        </div>
+
+        <div class="generos-container">
+            <div class="generos-grid" id="generosGrid">
+                <!-- Gêneros serão inseridos via JavaScript -->
+            </div>
+
+            <div class="selecao-info" id="selecaoInfo">
+                <span id="contadorSelecionados">0</span> gênero(s) selecionado(s)
+            </div>
+
+            <div class="botoes-acao">
+                <button class="btn-limpar" id="btnLimpar">
+                    <span>🗑️</span> Limpar Seleção
+                </button>
+                <button class="btn-confirmar" id="btnConfirmar">
+                    <span>✓</span> Confirmar e Voltar
+                </button>
+            </div>
+        </div>
+
+        <div class="dica">
+            <div class="dica-icon">💡</div>
+            <div class="dica-texto">
+                <strong>Dica:</strong> Seus gêneros favoritos serão salvos e usados para recomendar filmes incríveis para você!
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>CineVortex © 2026 - Tudo sobre cinema em um só lugar</p>
+    </footer>
+
+    <script src="/aparecida/backend/js/generos.js"></script>
+</body>
+</html>
