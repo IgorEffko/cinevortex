@@ -21,17 +21,28 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFiltros();
 });
 
-// Função para adicionar filme
+// Função para adicionar filme (CORRIGIDA)
 function adicionarFilme() {
     const titulo = document.getElementById('novoTitulo').value.trim();
     const ano = document.getElementById('novoAno').value.trim();
     const descricao = document.getElementById('novaDescricao').value.trim();
     const genero = document.getElementById('novoGenero').value.trim();
-    const imagem = document.getElementById('novaImagem').value.trim();
+    let imagem = document.getElementById('novaImagem').value.trim();
     
     if (!titulo || !ano) {
         alert('❌ Por favor, preencha o título e o ano do filme!');
         return;
+    }
+    
+    // Validação da imagem - aceita apenas URLs online ou base64 (NÃO aceita caminho de pasta local)
+    if (imagem && !imagem.startsWith('http') && !imagem.startsWith('https') && !imagem.startsWith('data:image')) {
+        alert('❌ Para adicionar imagem, use uma URL da internet (ex: https://...) ou faça upload do arquivo! Caminhos de pasta local não são permitidos.');
+        return;
+    }
+    
+    // Se não tiver imagem, usa placeholder
+    if (!imagem) {
+        imagem = 'https://via.placeholder.com/300x450?text=Sem+Poster';
     }
     
     const novoFilme = {
@@ -40,7 +51,7 @@ function adicionarFilme() {
         ano: parseInt(ano),
         descricao: descricao || 'Sem descrição disponível',
         genero: genero ? [genero] : ['Geral'],
-        poster: imagem || 'https://via.placeholder.com/300x450?text=Sem+Poster',
+        poster: imagem,
         nota: 0
     };
     

@@ -1,166 +1,142 @@
-// Array para armazenar usuários cadastrados
-let usuarios = [];
-
-// Carregar usuários do localStorage
-function carregarUsuarios() {
-    const saved = localStorage.getItem('usuarios');
-    if (saved) {
-        usuarios = JSON.parse(saved);
-    } else {
-        // Usuários padrão
-        usuarios = [
-            {
-                email: "admin@cinevortex.com",
-                senha: "admin123",
-                nome: "Administrador"
-            },
-            {
-                email: "usuario@cinevortex.com",
-                senha: "usuario123",
-                nome: "Usuário"
-            }
-        ];
-        salvarUsuarios();
-    }
-}
-
-function salvarUsuarios() {
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-}
-
-// Validação de força da senha
-function checkPasswordStrength(password) {
-    let strength = 0;
-    if (password.length >= 6) strength++;
-    if (password.length >= 8) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
-    
-    if (password.length === 0) return '';
-    if (strength <= 2) return '<span class="strength-weak">⚠️ Senha fraca</span>';
-    if (strength <= 4) return '<span class="strength-medium">⚠️ Senha média</span>';
-    return '<span class="strength-strong">✓ Senha forte</span>';
-}
-
-// Inicialização
+// Script simples para cadastro
 document.addEventListener('DOMContentLoaded', function() {
-    carregarUsuarios();
     
-    // Verificar se já está logado
-    const usuarioLogado = localStorage.getItem('usuarioLogado');
-    if (usuarioLogado) {
-        window.location.href = 'index.html';
+    // Pegar o formulário
+    const form = document.getElementById('cadastroForm');
+    const errorMsg = document.getElementById('errorMessage');
+    const successMsg = document.getElementById('successMessage');
+    
+    // Função para mostrar erro
+    function showError(message) {
+        errorMsg.textContent = message;
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+        setTimeout(() => {
+            errorMsg.style.display = 'none';
+        }, 3000);
     }
     
+    // Função para mostrar sucesso
+    function showSuccess(message) {
+        successMsg.textContent = message;
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+    }
+    
+    // Função para salvar dados
+    function saveUser(userData) {
+        // Pega usuários já cadastrados
+        let users = JSON.parse(localStorage.getItem('cinevortex_users')) || [];
+        
+        // Verifica se email já existe
+        if (users.some(user => user.email === userData.email)) {
+            showError('Este e-mail já está cadastrado!');
+            return false;
+        }
+        
+        // Adiciona novo usuário
+        users.push(userData);
+        
+        // Salva no navegador
+        localStorage.setItem('cinevortex_users', JSON.stringify(users));
+        
+        return true;
+    }
+    
+    // Evento de enviar formulário
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Coletar os dados
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmar_senha').value;
+        const aceitoTermos = document.getElementById('aceito_termos').checked;
+        
+        // Validar
+        if (!nome || !email || !senha || !confirmarSenha) {
+            showError('Preencha todos os campos!');
+            return;
+        }
+        
+        if (senha.length < 6) {
+            showError('A senha deve ter no mínimo 6 caracteres!');
+            return;
+        }
+        
+        if (senha !== confirmarSenha) {
+            showError('As senhas não coincidem!');
+            return;
+        }
+        
+        if (!aceitoTermos) {
+            showError('Você precisa aceitar os termos!');
+            return;
+        }
+        
+        // Criar objeto com os dados
+        const userData = {
+            id: Date.now(),
+            nome: nome,
+            email: email,
+            senha: senha,
+            dataCadastro: new Date().toLocaleString()
+        };
+        
+        // Salvar
+        if (saveUser(userData)) {
+            showSuccess('Cadastro realizado com sucesso!');
+            
+            // Limpar formulário
+            form.reset();
+            
+            // Redirecionar após 2 segundos
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 2000);
+        }
+    });
+    
+    // Verificar força da senha (simples)
     const senhaInput = document.getElementById('senha');
-    const confirmarInput = document.getElementById('confirmar_senha');
     const strengthDiv = document.getElementById('passwordStrength');
     
-    // Validação de senha em tempo real
     senhaInput.addEventListener('input', function() {
-        strengthDiv.innerHTML = checkPasswordStrength(this.value);
+        const senha = this.value;
         
-        if (confirmarInput.value && this.value !== confirmarInput.value) {
-            confirmarInput.style.borderColor = '#f44336';
-        } else if (confirmarInput.value) {
-            confirmarInput.style.borderColor = '#4caf50';
+        if (senha.length === 0) {
+            strengthDiv.textContent = '';
+        } else if (senha.length < 6) {
+            strengthDiv.textContent = '⚠️ Senha muito curta (mínimo 6 caracteres)';
+            strengthDiv.style.color = '#ff4444';
+        } else if (senha.length < 10) {
+            strengthDiv.textContent = '✅ Senha média';
+            strengthDiv.style.color = '#ffaa00';
         } else {
-            confirmarInput.style.borderColor = '#9c27b0';
+            strengthDiv.textContent = '✅ Senha forte';
+            strengthDiv.style.color = '#00c851';
         }
     });
+    
+    // Confirmar senha em tempo real
+    const confirmarInput = document.getElementById('confirmar_senha');
     
     confirmarInput.addEventListener('input', function() {
-        if (this.value !== senhaInput.value) {
-            this.style.borderColor = '#f44336';
+        const senha = senhaInput.value;
+        const confirmar = this.value;
+        
+        if (confirmar && senha !== confirmar) {
+            this.style.borderColor = '#ff4444';
         } else {
-            this.style.borderColor = '#4caf50';
+            this.style.borderColor = '#00c851';
         }
     });
 });
 
-// Cadastro
-document.getElementById('cadastroForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmar_senha').value;
-    const aceitoTermos = document.getElementById('aceito_termos').checked;
-    
-    // Limpar mensagens
-    document.getElementById('errorMessage').style.display = 'none';
-    document.getElementById('successMessage').style.display = 'none';
-    
-    // Validações
-    if (!nome || !email || !senha) {
-        mostrarErro('❌ Preencha todos os campos obrigatórios!');
-        return;
-    }
-    
-    if (!email.includes('@') || !email.includes('.')) {
-        mostrarErro('❌ Digite um e-mail válido!');
-        return;
-    }
-    
-    if (senha.length < 6) {
-        mostrarErro('❌ A senha deve ter pelo menos 6 caracteres!');
-        return;
-    }
-    
-    if (senha !== confirmarSenha) {
-        mostrarErro('❌ As senhas não coincidem!');
-        return;
-    }
-    
-    if (!aceitoTermos) {
-        mostrarErro('❌ Você precisa aceitar os termos de uso!');
-        return;
-    }
-    
-    // Verificar se e-mail já existe
-    const usuarioExistente = usuarios.find(u => u.email === email);
-    if (usuarioExistente) {
-        mostrarErro('❌ Este e-mail já está cadastrado!');
-        return;
-    }
-    
-    // Criar novo usuário
-    const novoUsuario = {
-        email: email,
-        senha: senha,
-        nome: nome
-    };
-    
-    usuarios.push(novoUsuario);
-    salvarUsuarios();
-    
-    // Mostrar mensagem de sucesso
-    mostrarSucesso('✅ Conta criada com sucesso! Redirecionando para o login...');
-    
-    // Limpar formulário
-    document.getElementById('cadastroForm').reset();
-    document.getElementById('passwordStrength').innerHTML = '';
-    
-    // Redirecionar após 2 segundos
-    setTimeout(() => {
-        window.location.href = 'login.html';
-    }, 2000);
-});
-
-function mostrarErro(mensagem) {
-    const errorDiv = document.getElementById('errorMessage');
-    errorDiv.textContent = mensagem;
-    errorDiv.style.display = 'block';
-    
-    setTimeout(() => {
-        errorDiv.style.display = 'none';
-    }, 3000);
-}
-
-function mostrarSucesso(mensagem) {
-    const successDiv = document.getElementById('successMessage');
-    successDiv.textContent = mensagem;
-    successDiv.style.display = 'block';
+// Função para ver usuários cadastrados (opcional - use no console)
+function verUsuarios() {
+    const users = JSON.parse(localStorage.getItem('cinevortex_users')) || [];
+    console.log('Usuários cadastrados:', users);
+    return users;
 }
