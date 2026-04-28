@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineVortex • Dashboard</title>
-    <link rel="stylesheet" href="/cinevortex_atualizado/css/home.css">
+    <link rel="stylesheet" href="css/home.css ">
 </head>
 <body>
     <header class="header">
@@ -135,6 +135,6 @@
         <p>CineVortex © 2026 - Tudo sobre cinema em um só lugar</p>
     </footer>
 
-    <script src="/cinevortex_atualizado/js/home.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
